@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<pthread.h>
+
+void *thread_func()
+{
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+	while(1)
+	{
+		printf("I'm thread\n");
+		sleep(1);
+	}
+	
+}
+
+int main(int argc, const char *argv[])
+{
+	pthread_t tid;
+	if(pthread_create(&tid, NULL, thread_func, NULL) != 0)
+	{
+		perror("fail to pthread_create");
+		exit(1);
+	}
+	
+	sleep(2);
+	pthread_cancel(tid);
+	
+	while(1);
+	return 0;
+}

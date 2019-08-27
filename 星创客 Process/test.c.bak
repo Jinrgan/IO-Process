@@ -1,0 +1,23 @@
+/*#include<stdio.h>
+#include <stdlib.h>
+
+int main(int argc, const char *argv[],char *env[])
+{
+	while(*env)
+		printf("%s\n", *env++);
+	printf("my->XXXX: %s\n", getenv("XXXX"));
+	
+	return 0;
+}*/
+
+#include<stdio.h>
+
+int main(int argc, const char *argv[],char *env[])
+{
+	while(*env)
+	{
+		printf("%s\n",*env++);
+	}
+	printf("my->XXXX:%s\n",getenv("XXXX"));
+	return 0;
+}
